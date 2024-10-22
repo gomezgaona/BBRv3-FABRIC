@@ -34,7 +34,7 @@ def start_mininet_hosts(num_hosts, buffer_size):
     net.interact()
     
     # Clean up after the network has been stopped
-    #net.stop()
+    # net.stop()
 
 # Enter the number of hosts
 num_hosts = 4
