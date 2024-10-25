@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os
+import sys
 import subprocess
 from mininet.net import Mininet
 from mininet.node import OVSKernelSwitch
@@ -34,12 +35,15 @@ def start_mininet_hosts(num_hosts, buffer_size):
     net.interact()
     
     # Clean up after the network has been stopped
-    # net.stop()
+    net.stop()
 
-# Enter the number of hosts
-num_hosts = 4
-TCP_buffer_size = "4096 1000000 200000000"
+# Check if the user provided a parameter
+if len(sys.argv) > 1:
+    num_hosts = int(sys.argv[1])
+    TCP_buffer_size = "4096 1000000 200000000"
+    start_mininet_hosts(num_hosts, TCP_buffer_size)
+else:
+    print("No parameter provided. Please enter a parameter.")
 
-start_mininet_hosts(num_hosts, TCP_buffer_size)
 
 
